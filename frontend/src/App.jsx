@@ -1,11 +1,11 @@
 import "./App.css";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import Home from "./pages/Home";
+import Router from "./routes/router";
 function App() {
-  return <>
-    <Home />
-  </>;
+  return (
+    <>
+      <Router />
+    </>
+  );
 }
 
 export default App;
