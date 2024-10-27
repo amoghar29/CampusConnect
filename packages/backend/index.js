@@ -12,9 +12,11 @@ const app = express();
 const dbUrl = process.env.MONGODB_URL;
 const salt = bcrypt.genSaltSync(5);
 const JWT_SECRET = process.env.JWT_SECRET;
+const PORT = process.env.PORT || 4000;
+const FRONTEND_URL = process.env.FRONTEND_URL;
 app.use(
   cors({
-    origin: 'http://localhost:3000',
+    origin: FRONTEND_URL,
     credentials: true,
   })
 );
@@ -79,4 +81,6 @@ app.post('/login', async (req, res) => {
       .json({ error: 'Internal server error', details: error.message });
   }
 });
-app.listen(4000);
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
