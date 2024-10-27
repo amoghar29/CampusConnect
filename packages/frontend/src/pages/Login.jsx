@@ -10,7 +10,7 @@ export default function Login() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        'http://localhost:4000/login',
+        'https://campusconnect-cxtc.onrender.com/login',
         { email, password },
         {
           headers: { 'Content-Type': 'application/json' },
@@ -18,11 +18,11 @@ export default function Login() {
         }
       );
       if (response.status === 200) {
-        window.location.href = '/home'; // Redirect to home page
+        window.location.href = '/home'; 
       }
-      console.log(response.data); // Log the response data
+      console.log(response.data); 
     } catch (error) {
-      console.error('Login error:', error); // Log any errors
+      console.error('Login error:', error); 
     }
   }
   return (
@@ -105,7 +105,7 @@ export default function Login() {
               </div>
               <div className="mt-4 flex items-center justify-end gap-x-2">
                 <Link
-                  className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:ring hover:ring-white h-10 px-4 py-2 duration-200"
+                  className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:ring hover:ring-white h-10 px-4 py-2 duration-200"
                   to="/Register"
                 >
                   Register
