@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import Header from '../components/Header';
 
@@ -8,7 +9,7 @@ export default function Home() {
     <div className="bg-white">
       <Header />
 
-      <div className="relative isolate px-6 pt-14 lg:px-8">
+      <div className="relative isolate px-[10%] pt-14">
         <div
           aria-hidden="true"
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -37,18 +38,18 @@ export default function Home() {
               there&apos;s something for everyone. Get involved today!
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
-              <a
-                href="#"
+              <Link
+                to="/get-started"
                 className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 transition duration-300 transform hover:scale-105"
               >
                 Get started
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="/learn-more"
                 className="text-sm font-semibold leading-6 text-gray-900"
               >
                 Learn more <span aria-hidden="true">→</span>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
