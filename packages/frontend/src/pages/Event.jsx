@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../components/Header';
 
-export default function Feedback() {
+export default function Event() {
   return (
     <div className="bg-white min-h-screen flex flex-col">
       <Header />
@@ -16,7 +16,7 @@ export default function Feedback() {
         <div className="text-center">
           
           <h1 className="text-6xl md:text-8xl font-bold tracking-tight text-gray-900 animate-pulse">
-            Feedback Coming Soon...
+            Events Coming Soon...
           </h1>
         </div>
 
