@@ -1,6 +1,9 @@
 {
   "name": "@CampusConnect/frontend",
   "version": "1.0.0",
+  "engines": {
+    "node": "20.17.0"
+  },
   "scripts": {
     "start": "react-scripts start"
   },
