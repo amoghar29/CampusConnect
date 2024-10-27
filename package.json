@@ -211,7 +211,7 @@
     "start:server": "yarn workspace @CampusConnect/backend start"
   },
   "engines": {
-    "node": "20.17.0"
+    "node": ">=20.15.0"
   },
   "keywords": [],
   "bugs": {
