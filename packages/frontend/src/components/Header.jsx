@@ -6,7 +6,7 @@ import { useState } from 'react';
 const navigation = [
   { name: 'Home', href: '#' },
   { name: 'Clubs', href: '#' },
-  { name: 'Events', href: '#' },
+  { name: 'Explore Events', href: '#' },
   { name: 'Feedback', href: '#' },
 ];
 export default function Header() {
