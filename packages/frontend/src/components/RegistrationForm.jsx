@@ -2,10 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default function RegistrationForm({
-  username,
+  email,
   password,
-  setUsername,
+  clubName,
+  setEmail,
   setPassword,
+  setClubName,
   register,
 }) {
   return (
@@ -30,16 +32,16 @@ export default function RegistrationForm({
                 <div className="group relative rounded-lg border focus-within:border-sky-200 px-3 pb-1.5 pt-2.5 duration-200 focus-within:ring focus-within:ring-sky-300/30">
                   <div className="flex justify-between">
                     <label className="text-xs font-medium text-muted-foreground group-focus-within:text-white text-gray-400">
-                      Username
+                      Email
                     </label>
                   </div>
                   <input
-                    type="text"
-                    name="username"
-                    value={username}
-                    placeholder="Username"
+                    type="email"
+                    name="email"
+                    value={email}
+                    placeholder="Email"
                     autoComplete="off"
-                    onChange={(e) => setUsername(e.target.value)}
+                    onChange={(e) => setEmail(e.target.value)}
                     className="block w-full border-0 bg-transparent p-0 text-sm placeholder:text-muted-foreground/90 focus:outline-none focus:ring-0 sm:leading-7 text-foreground"
                   />
                 </div>
@@ -61,6 +63,26 @@ export default function RegistrationForm({
                   />
                 </div>
               </div>
+
+              <div className="mt-4">
+                <div className="group relative rounded-lg border focus-within:border-sky-200 px-3 pb-1.5 pt-2.5 duration-200 focus-within:ring focus-within:ring-sky-300/30">
+                  <div className="flex justify-between">
+                    <label className="text-xs font-medium text-muted-foreground group-focus-within:text-white text-gray-400">
+                      Club Name
+                    </label>
+                  </div>
+                  <input
+                    type="text"
+                    name="clubName"
+                    value={clubName}
+                    placeholder="Club Name"
+                    autoComplete="off"
+                    onChange={(e) => setClubName(e.target.value)}
+                    className="block w-full border-0 bg-transparent p-0 text-sm placeholder:text-muted-foreground/90 focus:outline-none focus:ring-0 sm:leading-7 text-foreground"
+                  />
+                </div>
+              </div>
+
               <div className="mt-4 flex items-center justify-end gap-x-2">
                 <button
                   className="font-semibold hover:bg-black hover:text-white hover:ring hover:ring-white transition duration-300 inline-flex items-center justify-center rounded-md text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-white text-black h-10 px-4 py-2"
@@ -78,9 +100,11 @@ export default function RegistrationForm({
 }
 
 RegistrationForm.propTypes = {
-  username: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
-  setUsername: PropTypes.func.isRequired,
+  clubName: PropTypes.string.isRequired,
+  setEmail: PropTypes.func.isRequired,
   setPassword: PropTypes.func.isRequired,
+  setClubName: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
 };

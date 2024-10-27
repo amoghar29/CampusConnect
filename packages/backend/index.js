@@ -1,94 +1,82 @@
 const express = require('express');
-
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
 const { connectToDb } = require('./connection');
 const cors = require('cors');
 const { User } = require('./models/user');
 const bcrypt = require('bcrypt');
 
-const { setId, getId } = require('./utils/auth');
-const { JsonWebTokenError } = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 
 const app = express();
-
-// for password encryption
-const salt = bcrypt.genSaltSync(10);
-
-// middlewares
+const dbUrl = process.env.MONGODB_URL;
+const salt = bcrypt.genSaltSync(5);
+const JWT_SECRET = process.env.JWT_SECRET;
 app.use(
   cors({
-    origin: 'http://localhost:3000', // Adjust this to match your frontend's URL
+    origin: 'http://localhost:3000',
     credentials: true,
   })
 );
 app.use(express.json());
-// app.use(JsonWebTokenError()); // Removed as it is incorrect
-// If you need JWT verification, create a middleware function instead
-// const jwtMiddleware = (req, res, next) => {
-//     // Your JWT verification logic here
-//     next();
-// };
-// app.use(jwtMiddleware); // Uncomment this line if you create the middleware
 
-connectToDb(
-  'mongodb+srv://amogharlearns:qc1VkNPDcOGJuQwo@club-user-data.w643p.mongodb.net/'
-).then(() => console.log('Connected to DB'));
+connectToDb(dbUrl).then(() => console.log('Connected to DB'));
 
-
-// routes
 app.post('/register', async (req, res) => {
-  const { username, password } = req.body;
+  const { email, password, clubName } = req.body;
 
   try {
-    const hashedPassword = bcrypt.hashSync(password, salt); // Hash the password
+    const hashedPassword = bcrypt.hashSync(password, salt);
     const details = await User.create({
-      username,
+      email,
       password: hashedPassword,
+      clubName,
     });
-    return res.status(201).json(details); // Send the created user as a response
+    return res.status(201).json(details);
   } catch (error) {
     if (error.code === 11000) {
-      // MongoDB duplicate key error code
-      return res.status(400).json({ error: 'Username already exists' }); // User-friendly error message
+      return res.status(400).json({ error: 'Email already exists' });
     } else {
-      return res.status(500).json({ error: 'User registration failed' }); // Handle other errors
+      return res.status(500).json({ error: 'User registration failed' });
     }
   }
 });
-app.get('/home', async (req, res) => {
-  // You can add authentication checks here if needed
-  res.status(200).json({ message: 'Welcome to the home page!' });
-});
+
 app.post('/login', async (req, res) => {
-  const { username, password } = req.body;
-  const userInfo = await User.findOne({ username });
-  if (!userInfo) {
-    // User not found
-    console.log('User not found');
-    return res.status(400).json({ error: 'User not found' });
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    return res.status(400).json({ error: 'Email and password are required' });
   }
-  const passwordCorrect = bcrypt.compareSync(password, userInfo.password);
 
-  if (passwordCorrect) {
-    // user authenticated
-    console.log(userInfo);
+  try {
+    const userInfo = await User.findOne({ email });
 
-    const token = setId(userInfo); // remove line
-    const vals = getId(token); // remove line
-    console.log(vals); // remove line
+    if (!userInfo) {
+      return res.status(400).json({ error: 'User not found' });
+    }
 
-    res.cookie('uid', token);
-    // {{ edit_3 }} Consider sending a JSON response instead of redirecting
-    return res.status(200).json({
-      success: true,
-      user: {
-        username: userInfo.username,
-        // Add any other user details you want to send back
-      },
-    });
-  } else {
-    // Password incorrect
-    return res.status(400).json({ error: 'Invalid password' });
+    const passwordCorrect = bcrypt.compareSync(password, userInfo.password);
+
+    if (passwordCorrect) {
+      const token = jwt.sign({ email: email }, JWT_SECRET);
+      res.header('jwt', token);
+      return res.status(200).json({
+        success: true,
+        user: {
+          email: userInfo.email,
+        },
+      });
+    } else {
+      return res.status(400).json({ error: 'Invalid password' });
+    }
+  } catch (error) {
+    console.error('Login error:', error);
+
+    console.error(error.stack);
+    return res
+      .status(500)
+      .json({ error: 'Internal server error', details: error.message });
   }
 });
-
 app.listen(4000);

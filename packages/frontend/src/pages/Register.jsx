@@ -6,8 +6,9 @@ import RegistrationFailure from '../components/RegistrationFailure';
 import RegistrationForm from '../components/RegistrationForm';
 
 export default function Register() {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [clubName, setClubName] = useState('');
   const [registrationSuccess, setRegistrationSuccess] = useState(false);
   const [registrationError, setRegistrationError] = useState(false);
 
@@ -17,7 +18,7 @@ export default function Register() {
     try {
       const response = await axios.post(
         'http://localhost:4000/register',
-        { username, password },
+        { email, password, clubName },
         { headers: { 'Content-Type': 'application/json' } }
       );
 
@@ -34,21 +35,26 @@ export default function Register() {
       setRegistrationSuccess(false);
     }
   }
+
   const handleTryAgain = () => {
-    setUsername('');
+    setEmail('');
     setPassword('');
+    setClubName('');
     setRegistrationSuccess(false);
     setRegistrationError(false);
   };
+
   return (
     <div>
       {registrationSuccess && <RegistrationSuccess />}
       {registrationError && <RegistrationFailure onTryAgain={handleTryAgain} />}
       <RegistrationForm
-        username={username}
+        email={email}
         password={password}
-        setUsername={setUsername}
+        clubName={clubName}
+        setEmail={setEmail}
         setPassword={setPassword}
+        setClubName={setClubName}
         register={register}
       />
     </div>
