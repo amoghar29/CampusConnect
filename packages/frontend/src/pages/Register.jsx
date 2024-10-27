@@ -4,7 +4,7 @@ import axios from 'axios';
 import RegistrationSuccess from '../components/RegistrationSuccess';
 import RegistrationFailure from '../components/RegistrationFailure';
 import RegistrationForm from '../components/RegistrationForm';
-
+const API_URL = 'https://campusconnect-cxtc.onrender.com';
 export default function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -17,7 +17,7 @@ export default function Register() {
 
     try {
       const response = await axios.post(
-        'https://campusconnect-cxtc.onrender.com/login',
+        API_URL + '/register',
         { email, password, clubName },
         { headers: { 'Content-Type': 'application/json' } }
       );

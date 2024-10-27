@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-
+const API_URL = 'https://campusconnect-cxtc.onrender.com';
 export default function Login() {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
@@ -10,7 +10,7 @@ export default function Login() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        'https://campusconnect-cxtc.onrender.com/login',
+        API_URL + '/login',
         { email, password },
         {
           headers: { 'Content-Type': 'application/json' },
