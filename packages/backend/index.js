@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 4000;
 const FRONTEND_URL = process.env.FRONTEND_URL;
 app.use(
   cors({
-    origin: FRONTEND_URL,
+    origin: process.env.FRONTEND_URL || 'https://campus-connect-frontend-alpha.vercel.app',
     credentials: true,
   })
 );
