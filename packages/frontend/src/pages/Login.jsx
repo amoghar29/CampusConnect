@@ -5,13 +5,13 @@ import { Link } from 'react-router-dom';
 
 export default function Login() {
   const [password, setPassword] = useState('');
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   async function login(e) {
     e.preventDefault();
     try {
       const response = await axios.post(
         'http://localhost:4000/login',
-        { username, password },
+        { email, password },
         {
           headers: { 'Content-Type': 'application/json' },
           withCredentials: true,
@@ -57,10 +57,10 @@ export default function Login() {
                     </div>
                     <input
                       type="text"
-                      name="username"
-                      placeholder="Username"
-                      value={username}
-                      onChange={(e) => setUsername(e.target.value)}
+                      name="email"
+                      placeholder="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       autoComplete="off"
                       className="pointer-events-auto block w-full border-0 bg-transparent p-0 text-sm file:my-1 file:rounded-full file:border-0 file:bg-accent file:px-4 file:py-2 file:font-medium placeholder:text-muted-foreground/90 focus:outline-none focus:ring-0 sm:leading-7 text-foreground cursor-text"
                     />
