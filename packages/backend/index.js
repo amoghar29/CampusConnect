@@ -13,10 +13,10 @@ const dbUrl = process.env.MONGODB_URL;
 const salt = bcrypt.genSaltSync(5);
 const JWT_SECRET = process.env.JWT_SECRET;
 const PORT = process.env.PORT || 4000;
-const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:3000';
+// const FRONTEND_URL = process.env.FRONTEND_LOCAL_URL;
 app.use(
   cors({
-    origin: FRONTEND_URL,
+    origin: 'http://localhost:3000',
     credentials: true,
   })
 );
