@@ -8,7 +8,7 @@ import Event from '../pages/Event';
 import Club from '../pages/Club';
 import PostEvent from '../pages/PostEvent';
 import Feedback from '../pages/Feedback';
-
+import NewHome from '../pages/newHome'
 export default function Router() {
   return (
     <Routes>
@@ -21,6 +21,7 @@ export default function Router() {
       <Route path="/feedback" element={<Feedback />} />
       <Route path="/admin/dashboard" element={<Dashboard />} />
       <Route path="/admin/post-event" element={<PostEvent />} />
+      <Route path="/newHome" element={<NewHome/>}/>
     </Routes>
   );
 }
