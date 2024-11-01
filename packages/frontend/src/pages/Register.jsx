@@ -4,7 +4,7 @@ import axios from 'axios';
 import RegistrationSuccess from '../components/RegistrationSuccess';
 import RegistrationFailure from '../components/RegistrationFailure';
 import RegistrationForm from '../components/RegistrationForm';
-
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 export default function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -13,13 +13,15 @@ export default function Register() {
   const [registrationError, setRegistrationError] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  console.log('Backend URL:', BACKEND_URL);
+
   async function register(e) {
     e.preventDefault();
     setIsSubmitted(true);
 
     try {
       const response = await axios.post(
-        `${process.env.BACKEND_URL}/register`,
+        `${BACKEND_URL}/register`,
         { email, password, clubName },
         {
           headers: { 'Content-Type': 'application/json' },

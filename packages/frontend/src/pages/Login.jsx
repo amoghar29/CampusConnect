@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 export default function Login() {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
@@ -11,7 +11,7 @@ export default function Login() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        `${process.env.BACKEND_URL}/login`,
+        `${BACKEND_URL}/login`,
         { email, password },
         {
           headers: { 'Content-Type': 'application/json' },
