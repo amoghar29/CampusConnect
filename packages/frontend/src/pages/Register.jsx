@@ -21,9 +21,9 @@ export default function Register() {
       const response = await axios.post(
         'https://campusconnect-cxtc.onrender.com/register',
         { email, password, clubName },
-        { 
+        {
           headers: { 'Content-Type': 'application/json' },
-          withCredentials: true 
+          withCredentials: true,
         }
       );
 
@@ -51,23 +51,38 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white px-[10%]"> {/* Added 10% padding */}
+    <>
       {isSubmitted ? (
         <>
           {registrationSuccess && <RegistrationSuccess />}
-          {registrationError && <RegistrationFailure onTryAgain={handleTryAgain} />}
+          {registrationError && (
+            <RegistrationFailure onTryAgain={handleTryAgain} />
+          )}
         </>
       ) : (
-        <RegistrationForm
-          email={email}
-          password={password}
-          clubName={clubName}
-          setEmail={setEmail}
-          setPassword={setPassword}
-          setClubName={setClubName}
-          register={register}
-        />
+        <div className="bg-gray-100 text-gray-900 flex min-h-screen flex-col items-center pt-16 sm:justify-center sm:pt-0">
+          <div className="relative mt-12 w-full max-w-lg sm:mt-10">
+            <div className="relative -mb-px h-px w-full bg-gradient-to-r from-transparent via-purple-600 to-transparent"></div>
+            <div className="mx-5 border border-gray-300 shadow-lg rounded-lg bg-white p-8">
+              <h3 className="text-2xl font-semibold leading-7 tracking-tight text-center text-black">
+                Club Registration
+              </h3>
+              <p className="mt-2 text-lg font-medium text-gray-600 text-center">
+                Create an account to get started.
+              </p>
+              <RegistrationForm
+                email={email}
+                password={password}
+                clubName={clubName}
+                setEmail={setEmail}
+                setPassword={setPassword}
+                setClubName={setClubName}
+                register={register}
+              />
+            </div>
+          </div>
+        </div>
       )}
-    </div>
+    </>
   );
 }
