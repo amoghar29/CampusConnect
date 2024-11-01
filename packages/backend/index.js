@@ -13,10 +13,10 @@ const dbUrl = process.env.MONGODB_URL;
 const salt = bcrypt.genSaltSync(5);
 const JWT_SECRET = process.env.JWT_SECRET;
 const PORT = process.env.PORT || 4000;
-const FRONTEND_URL = process.env.FRONTEND_URL;
+const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:3000';
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL || 'https://campus-connect-frontend-alpha.vercel.app',
+    origin: FRONTEND_URL,
     credentials: true,
   })
 );
