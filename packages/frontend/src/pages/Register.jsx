@@ -19,7 +19,7 @@ export default function Register() {
 
     try {
       const response = await axios.post(
-        'https://campusconnect-cxtc.onrender.com/register',
+        `${process.env.BACKEND_URL}/register`,
         { email, password, clubName },
         {
           headers: { 'Content-Type': 'application/json' },

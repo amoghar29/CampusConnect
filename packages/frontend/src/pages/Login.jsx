@@ -11,7 +11,7 @@ export default function Login() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        'https://campusconnect-cxtc.onrender.com/login',
+        `${process.env.BACKEND_URL}/login`,
         { email, password },
         {
           headers: { 'Content-Type': 'application/json' },
