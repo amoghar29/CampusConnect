@@ -4,6 +4,9 @@
   "scripts": {
     "start": "react-scripts start"
   },
+  "engines": {
+  "node": ">= 20.15.0"
+},
   "dependencies": {
     "@headlessui/react": "^2.1.10",
     "@heroicons/react": "^2.1.5",
