@@ -1,54 +1,74 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Calendar, Users, Trophy, Bell, ArrowRight, ChevronRight } from 'lucide-react';
+import {
+  Calendar,
+  Users,
+  Trophy,
+  Bell,
+  ArrowRight,
+  ChevronRight,
+} from 'lucide-react';
 import Header from '../components/Header';
 
 export default function Home() {
   const features = [
     {
       icon: <Calendar className="h-6 w-6 text-indigo-600" />,
-      title: "Event Discovery",
-      description: "Stay updated with all campus events, workshops, and activities happening across different clubs."
+      title: 'Event Discovery',
+      description:
+        'Stay updated with all campus events, workshops, and activities happening across different clubs.',
     },
     {
       icon: <Users className="h-6 w-6 text-indigo-600" />,
-      title: "Club Community",
-      description: "Connect with various college clubs, join communities that match your interests, and engage with like-minded peers."
+      title: 'Club Community',
+      description:
+        'Connect with various college clubs, join communities that match your interests, and engage with like-minded peers.',
     },
     {
       icon: <Trophy className="h-6 w-6 text-indigo-600" />,
-      title: "Achievement Showcase",
-      description: "Showcase your participation, achievements, and contributions to different club activities."
+      title: 'Achievement Showcase',
+      description:
+        'Showcase your participation, achievements, and contributions to different club activities.',
     },
-    {
-      icon: <Bell className="h-6 w-6 text-indigo-600" />,
-      title: "Real-time Updates",
-      description: "Get instant notifications about new events, club recruitments, and important announcements."
-    }
+    
   ];
 
   const upcomingEvents = [
     {
       id: 1,
-      title: "Tech Week 2024",
-      club: "Tech Club",
-      date: "May 15-20, 2024",
-      image: "/api/placeholder/400/300"
+      title: 'Tech Week 2024',
+      club: 'Tech Club',
+      date: 'May 15-20, 2024',
+      image: '/api/placeholder/400/300',
     },
     {
       id: 2,
-      title: "Cultural Fest",
-      club: "Cultural Club",
-      date: "May 25, 2024",
-      image: "/api/placeholder/400/300"
+      title: 'Cultural Fest',
+      club: 'Cultural Club',
+      date: 'May 25, 2024',
+      image: '/api/placeholder/400/300',
     },
     {
       id: 3,
-      title: "Hackathon",
-      club: "Coding Club",
-      date: "June 1-2, 2024",
-      image: "/api/placeholder/400/300"
-    }
+      title: 'Hackathon',
+      club: 'Coding Club',
+      date: 'June 1-2, 2024',
+      image: '/api/placeholder/400/300',
+    },
+    {
+      id: 3,
+      title: 'Hackathon',
+      club: 'Coding Club',
+      date: 'June 1-2, 2024',
+      image: '/api/placeholder/400/300',
+    },
+    {
+      id: 3,
+      title: 'Hackathon',
+      club: 'Coding Club',
+      date: 'June 1-2, 2024',
+      image: '/api/placeholder/400/300',
+    },
   ];
 
   return (
@@ -68,12 +88,13 @@ export default function Home() {
                 Your Gateway to Campus Life
               </h1>
               <p className="mt-6 text-lg leading-8 text-gray-600">
-                Connect, Participate, and Thrive in your college community. Join clubs, discover events, 
-                and stay updated with everything happening on campus - all in one place.
+                Connect, Participate, and Thrive in your college community. Join
+                clubs, discover events, and stay updated with everything
+                happening on campus - all in one place.
               </p>
               <div className="mt-10 flex items-center justify-center gap-x-6">
                 <Link
-                  to="/events"
+                  to="/explore-events"
                   className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
                   Explore Events
@@ -92,21 +113,27 @@ export default function Home() {
         {/* Features Section */}
         <div className="py-24 sm:py-32">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="mx-auto max-w-2xl lg:text-center">
-              <h2 className="text-base font-semibold leading-7 text-indigo-600">Everything You Need</h2>
+            <div className="mx-auto max-w-2xl text-center">
+              <h2 className="text-base font-semibold leading-7 text-indigo-600">
+                Everything You Need
+              </h2>
               <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                 All Your Campus Activities in One Place
               </p>
             </div>
             <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-              <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-4">
+              <dl className="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-3 lg:gap-x-12 justify-items-center">
                 {features.map((feature, index) => (
-                  <div key={index} className="flex flex-col items-start">
+                  <div key={index} className="flex flex-col items-center text-center max-w-sm">
                     <div className="rounded-lg bg-gray-50 p-2 ring-1 ring-gray-200/50">
                       {feature.icon}
                     </div>
-                    <dt className="mt-4 font-semibold text-gray-900">{feature.title}</dt>
-                    <dd className="mt-2 leading-7 text-gray-600">{feature.description}</dd>
+                    <dt className="mt-4 font-semibold text-gray-900">
+                      {feature.title}
+                    </dt>
+                    <dd className="mt-2 leading-7 text-gray-600">
+                      {feature.description}
+                    </dd>
                   </div>
                 ))}
               </dl>
@@ -119,19 +146,21 @@ export default function Home() {
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="flex justify-between items-center">
               <div>
-                <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Upcoming Events</h2>
+                <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                  Upcoming Events
+                </h2>
                 <p className="mt-2 text-lg leading-8 text-gray-600">
                   Don't miss out on these exciting upcoming events
                 </p>
               </div>
-              <Link 
-                to="/events" 
+              <Link
+                to="/explore-events"
                 className="text-sm font-semibold text-indigo-600 flex items-center gap-1"
               >
                 View all events <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
-            
+
             <div className="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:mt-16 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3">
               {upcomingEvents.map((event) => (
                 <article key={event.id} className="flex flex-col items-start">
@@ -162,6 +191,36 @@ export default function Home() {
           </div>
         </div>
 
+        <div className="bg-gray-50 py-24 sm:py-32">
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="flex justify-between items-center">
+              <div>
+                <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                  Recent Winners
+                </h2>
+                <p className="mt-2 text-lg leading-8 text-gray-600">
+                  Celebrating excellence and achievement in campus events
+                </p>
+              </div>
+              <Link
+                to="/winners"
+                className="text-sm font-semibold text-indigo-600 flex items-center gap-1"
+              >
+                View all winners <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+
+            {/* Add a preview of recent winners here if desired */}
+            <div className="mt-10 flex justify-center">
+              <Link
+                to="/winners"
+                className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
+              >
+                Explore Winners Gallery <Trophy className="ml-2 h-5 w-5" />
+              </Link>
+            </div>
+          </div>
+        </div>
         {/* CTA Section */}
         <div className="bg-white">
           <div className="mx-auto max-w-7xl py-24 sm:px-6 sm:py-32 lg:px-8">
@@ -173,8 +232,8 @@ export default function Home() {
                   Join a club today.
                 </h2>
                 <p className="mt-6 text-lg leading-8 text-gray-300">
-                  Discover clubs that match your interests and connect with like-minded peers. 
-                  Start your journey today!
+                  Discover clubs that match your interests and connect with
+                  like-minded peers. Start your journey today!
                 </p>
                 <div className="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
                   <Link
@@ -183,7 +242,10 @@ export default function Home() {
                   >
                     Browse Clubs
                   </Link>
-                  <Link to="/events" className="text-sm font-semibold leading-6 text-white">
+                  <Link
+                    to="/events"
+                    className="text-sm font-semibold leading-6 text-white"
+                  >
                     View Events <span aria-hidden="true">→</span>
                   </Link>
                 </div>

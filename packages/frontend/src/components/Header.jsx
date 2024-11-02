@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Dialog, DialogPanel } from '@headlessui/react';
@@ -5,8 +6,9 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
 const navigation = [
   { name: 'Home', to: '/home' },
-  { name: 'Clubs', to: '/club' },
-  { name: 'Explore Events', to: '/event' },
+  { name: 'Clubs', to: '/clubs' },
+  { name: 'Explore Events', to: '/explore-events' },
+  { name: 'Winners', to: '/winners' }, // Added Winners to navigation
   { name: 'Feedback', to: '/feedback' },
 ];
 
