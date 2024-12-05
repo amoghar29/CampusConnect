@@ -1,10 +1,6 @@
-const express = require('express');
-const router = express.Router();
+const router = require("express").Router();
+const {submitUserFeedback} = require("../controllers/feedback/feedback")
+router.post("/", submitUserFeedback);
 
-// POST /feedback - Submit feedback
-router.post('/', /* submitFeedbackController */);
 
-// GET /feedback - Get all feedback (admin only)
-router.get('/', /* adminMiddleware, getAllFeedbackController */);
-
-module.exports = router;
+module.exports = router

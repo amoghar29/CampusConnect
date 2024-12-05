@@ -1,13 +1,7 @@
-const express = require('express');
-const router = express.Router();
+const handleAdminSignup = require("../controllers/auth/signup");
+const isAdminSignedin = require("../controllers/auth/signin");
+const router = require("express").Router();
 
-// POST /auth/register - Register a new club head
-router.post('/register', /* registerController */);
-
-// POST /auth/login - Login for club heads
-router.post('/login', /* loginController */);
-
-// POST /auth/logout - Logout
-router.post('/logout', /* logoutController */);
-
+router.post("/signup", handleAdminSignup);
+router.post("/signin", isAdminSignedin);
 module.exports = router;
