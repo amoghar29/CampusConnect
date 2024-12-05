@@ -1,10 +1,6 @@
-const express = require('express');
-const router = express.Router();
+const router = require("express").Router();
+const submitUserSuggestion = require("../controllers/suggestion/suggestion");
 
-// POST /suggestions - Submit a suggestion
-router.post('/', /* submitSuggestionController */);
-
-// GET /suggestions - Get all suggestions (admin only)
-router.get('/', /* adminMiddleware, getAllSuggestionsController */);
+router.post("/", submitUserSuggestion);
 
 module.exports = router;

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const Schema = mongoose.Schema();
+const {Schema} = mongoose;
 
 const suggestionSchema = new Schema({
   userFullname: { type: String, required: true },
@@ -14,4 +14,4 @@ const suggestionSchema = new Schema({
   additionalNotes: { type: String },
 });
 
-module.exports = mongoose.model('Suggestions', suggestionSchema);
+module.exports = mongoose.model('Suggestion', suggestionSchema);
